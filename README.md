@@ -1,8 +1,9 @@
 shake.js Fork
 =======================================
 
-This fork does not use event system, but rather use an function handler.
-Now we can have as many Shake object as we want, and now we can know which one fired.
+This fork does not use event system, but rather use a classic handler.
+We can now have as many Shake object as we want, and we also know which one fired.
+
 
 Forked from
 * Git: `git clone https://github.com/alexgibson/shake.js`
