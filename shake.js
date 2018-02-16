@@ -1,6 +1,10 @@
 /*
  * Author: Alex Gibson
  * https://github.com/alexgibson/shake.js
+ *
+ * Fork Author : Alexis Bouhet
+ * https://github.com/zouloux/shake.js
+ *
  * License: MIT license
  */
 
@@ -22,6 +26,11 @@
         //feature detect
         this.hasDeviceMotion = 'ondevicemotion' in window;
 
+        if ('handler' in options)
+        {
+            throw new Error(`Shake.js // Options needs an handler property.`);
+        }
+
         this.options = {
             threshold: 15, //default velocity threshold for shake to register
             timeout: 1000 //default interval between events
@@ -42,19 +51,6 @@
         this.lastX = null;
         this.lastY = null;
         this.lastZ = null;
-
-        //create custom event
-        if (typeof document.CustomEvent === 'function') {
-            this.event = new document.CustomEvent('shake', {
-                bubbles: true,
-                cancelable: true
-            });
-        } else if (typeof document.createEvent === 'function') {
-            this.event = document.createEvent('Event');
-            this.event.initEvent('shake', true, true);
-        } else {
-            return false;
-        }
     }
 
     //reset timer values
@@ -107,7 +103,7 @@
             timeDifference = currentTime.getTime() - this.lastTime.getTime();
 
             if (timeDifference > this.options.timeout) {
-                window.dispatchEvent(this.event);
+                this.options.handler();
                 this.lastTime = new Date();
             }
         }
@@ -116,13 +112,6 @@
         this.lastY = current.y;
         this.lastZ = current.z;
 
-    };
-
-    //event handler
-    Shake.prototype.handleEvent = function (e) {
-        if (typeof (this[e.type]) === 'function') {
-            return this[e.type](e);
-        }
     };
 
     return Shake;

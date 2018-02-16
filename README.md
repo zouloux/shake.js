@@ -1,15 +1,17 @@
-shake.js
+shake.js Fork
 =======================================
 
-A custom 'shake' event JavaScript plugin for mobile web browsers using device accelerometer.
+This fork does not use event system, but rather use an function handler.
+Now we can have as many Shake object as we want, and now we can know which one fired.
+
+Forked from
+* Git: `git clone https://github.com/alexgibson/shake.js`
 
 Installation
 ---------------------------------------
+* Download: [zip](https://github.com/zouloux/shake.js/zipball/master)
+* [NPM](https://www.npmjs.org/): `npm install @zouloux/shake.js`
 
-* Download: [zip](https://github.com/alexgibson/shake.js/zipball/master)
-* [NPM](https://www.npmjs.org/): `npm install shake.js`
-* [Bower](https://github.com/twitter/bower/): `bower install shake.js`
-* Git: `git clone https://github.com/alexgibson/shake.js`
 
 Dependencies
 ---------------------------------------
@@ -24,7 +26,7 @@ Setup
 For CommonJS using NPM:
 
 ```
-var Shake = require('shake.js');
+const Shake = require('shake.js');
 ```
 
 For AMD module:
@@ -44,9 +46,13 @@ In the browser:
 Next, create a new Shake instance:
 
 ```
-var myShakeEvent = new Shake({
+const myShakeEvent = new Shake({
     threshold: 15, // optional shake strength threshold
-    timeout: 1000 // optional, determines the frequency of event generation
+    timeout: 1000, // optional, determines the frequency of event generation
+    handler: () => // required, called when shake is detected
+    {
+    	console.log('Shake detected !');
+    }
 });
 ```
 
@@ -54,25 +60,6 @@ Start listening to device motion:
 
 ```
 myShakeEvent.start();
-```
-
-Register a `shake` event listener on `window` with your callback:
-
-```
-window.addEventListener('shake', shakeEventDidOccur, false);
-
-//function to call when shake occurs
-function shakeEventDidOccur () {
-
-    //put your own code here etc.
-    alert('shake!');
-}
-```
-
-You can stop listening for shake events like so:
-
-```
-window.removeEventListener('shake', shakeEventDidOccur, false);
 ```
 
 To stop listening to device motion, you can call:
