@@ -23,24 +23,21 @@
     'use strict';
 
     function Shake(options) {
+
+        if (options == null || !('handler' in options))
+            throw new Error(`Shake.js // Options needs an handler property.`);
+
         //feature detect
         this.hasDeviceMotion = 'ondevicemotion' in window;
-
-        if (!('handler' in options))
-        {
-            throw new Error(`Shake.js // Options needs an handler property.`);
-        }
 
         this.options = {
             threshold: 15, //default velocity threshold for shake to register
             timeout: 1000 //default interval between events
         };
 
-        if (typeof options === 'object') {
-            for (var i in options) {
-                if (options.hasOwnProperty(i)) {
-                    this.options[i] = options[i];
-                }
+        for (var i in options) {
+            if (options.hasOwnProperty(i)) {
+                this.options[i] = options[i];
             }
         }
 
@@ -112,6 +109,13 @@
         this.lastY = current.y;
         this.lastZ = current.z;
 
+    };
+
+    //event handler
+    Shake.prototype.handleEvent = function (e) {
+        if (typeof (this[e.type]) === 'function') {
+            return this[e.type](e);
+        }
     };
 
     return Shake;

@@ -1,6 +1,6 @@
 {
   "name": "@zouloux/shake.js",
-  "version": "1.2.4",
+  "version": "1.2.5",
   "description": "Shake event detector for mobile web browsers using device accelerometer. Forked from shake.js.",
   "keywords": [
     "shake",
