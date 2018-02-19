@@ -11,7 +11,7 @@ Forked from
 Installation
 ---------------------------------------
 * Download: [zip](https://github.com/zouloux/shake.js/zipball/master)
-* [NPM](https://www.npmjs.org/): `npm install @zouloux/shake.js`
+* [NPM](https://www.npmjs.org/): `npm install @zouloux/shake`
 
 
 Dependencies
@@ -27,7 +27,7 @@ Setup
 For CommonJS using NPM:
 
 ```
-const Shake = require('shake.js');
+const Shake = require('@zouloux/shake');
 ```
 
 For AMD module:

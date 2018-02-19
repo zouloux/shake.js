@@ -1,5 +1,5 @@
 {
-  "name": "@zouloux/shake.js",
+  "name": "@zouloux/shake",
   "version": "1.2.5",
   "description": "Shake event detector for mobile web browsers using device accelerometer. Forked from shake.js.",
   "keywords": [
@@ -8,6 +8,7 @@
     "event"
   ],
   "main": "shake.js",
+  "module": "shake.js",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/zouloux/shake.js.git"
