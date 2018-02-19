@@ -25,7 +25,7 @@
     function Shake(options) {
 
         if (options == null || !('handler' in options))
-            throw new Error(`Shake.js // Options needs an handler property.`);
+            throw new Error("Shake.js // Options needs an handler property.");
 
         //feature detect
         this.hasDeviceMotion = 'ondevicemotion' in window;
